@@ -264,3 +264,5 @@ provider "aws" {
 
 Once the plan ran and the migration completed - the above aws provider was removed 
 
+
+We have automated this workaround wuth the following bash script [bin/generate_tfrc_credentials](bin/generate_tfrc_credientals)
