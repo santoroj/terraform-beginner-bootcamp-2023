@@ -213,3 +213,54 @@ If you lose this file, you lose knowing the state of your infrastuctor
 #### Terraform Directory
 `.terraform` directory contains binaries of terraform providers.
 
+
+### Issues with Terraform Cloud Login and Gitpod Workspace
+
+When attemplt to run `terraform login` it will launch a wiswig view to generate a token.
+However it does not work as expected int Gitpod VScode in the browser.
+
+The workaround is to manually generate a token in terraform cloud
+
+[terraform login ](https://app.terraform.io/app/settings/tokens?source=terraform-login)
+
+The create the final  manually here:
+
+ ```sh
+   touch  /home/gitpod/.terraform.d/credentials.tfrc.json
+   open /home/gitpod/.terraform.d/credentials.tfrc.json
+ ```
+
+Provide the following code ( replace your token in the file)
+
+```json
+{
+  "credentials": {
+    "app.terraform.io": {
+      "token": "YOUR-TERRAFORM-CLOUD-TOKEN"
+    }
+  }
+}
+```
+
+Terraform plan was also failing with the following error
+
+``` sh
+│ Error: Invalid provider configuration
+│ 
+│ Provider "registry.terraform.io/hashicorp/aws" requires explicit
+│ configuration. Add a provider block to the root module and configure the
+│ provider's required arguments as described in the provider documentation.
+```
+
+To get around the issue I had to put the following terraform provider into the main.tf file to get it to run
+
+```ini
+provider "aws" {
+  region = "eu-west-2"
+  access_key = "AWSACCESS_KEY"
+  secret_key = "AWS_SECRET_KEY"
+}
+```
+
+Once the plan ran and the migration completed - the above aws provider was removed 
+
