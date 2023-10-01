@@ -1,6 +1,16 @@
 # Terraform Beginner Bootcamp 2023
 
-## Semantic Versioning :mage:
+## Table of Contents
+
+- [Semantic Versioning](#semantic-versioning)
+- [Install the Terraform CLI](#install-the-terraform-cli)
+- [Gitpod](#gitpod)
+- [Refactoring into Bash Scripts](#refactoring-into-bash-scripts)
+- [AWS CLI Installation](#aws-cli-installation)
+- [Terraform Basics](#terraform-basics)
+
+
+## Semantic Versioning
 
 
 This project is going to utilize  semantic versioning for it's tagging.
@@ -17,7 +27,7 @@ The general format:
 - **PATCH** version when you make backward compatible bug fixes
 
 
-## Installation Notes:
+## Install the Terraform CLI:
 
 Note users must have some knowledge of the Linux CLI
 
@@ -131,7 +141,7 @@ All future workspace launched will set the env vars for all bash terminals opene
 You can also set env vars in the `.gitpod.yml` but this can only contain non-sensitive env vars.
 
 
-### AWS CLU Installation
+### AWS CLI Installation
 
 AWS CLI is install for this project via the bash script [`./bin/install_aws_cli`](./bin/install_aws_cli)
 
