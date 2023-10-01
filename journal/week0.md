@@ -1,10 +1,6 @@
 
 # Terraform Beginner Bootcamp 2023 - week 0
 
-- [Paste Your Document In Here](#paste-your-document-in-here)
-  * [And a table of contents](#and-a-table-of-contents)
-  * [On the right](#on-the-right)
-- [Terraform Beginner Bootcamp 2023 - week 0](#terraform-beginner-bootcamp-2023---week-0)
   * [Semantic Versioning](#semantic-versioning)
   * [Install the Terraform CLI:](#install-the-terraform-cli-)
     + [Considerations with the Terraform CLI changes](#considerations-with-the-terraform-cli-changes)
