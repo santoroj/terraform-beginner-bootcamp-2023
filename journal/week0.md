@@ -15,7 +15,7 @@
       - [Printing Vars](#printing-vars)
       - [Scopig of Env Vars](#scopig-of-env-vars)
       - [Persisting Env in Gitpod](#persisting-env-in-gitpod)
-    + [AWS CLI Installation](#aws-cli-installation)
+  * [AWS CLI Installation](#aws-cli-installation)
   * [Terraform Basics](#terraform-basics)
     + [Terraform Registry](#terraform-registry)
       - [Terraform Console](#terraform-console)
