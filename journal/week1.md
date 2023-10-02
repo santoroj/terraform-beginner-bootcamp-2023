@@ -1,3 +1,4 @@
+
 # Terraform Begineer Bootcamp 2023 - Week 1
 
 ## Root Module Structure
@@ -52,4 +53,5 @@ This is the defailt file to load in teraform variables in bluk
 ### order of terraform variables
 
 - TODO: document which terraform variables takes presendence
+
 
