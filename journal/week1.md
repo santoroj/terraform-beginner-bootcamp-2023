@@ -55,3 +55,79 @@ This is the defailt file to load in teraform variables in bluk
 - TODO: document which terraform variables takes presendence
 
 
+## Dealing with Configuration Drift
+
+`terraform state list`
+aws_s3_bucket.website_bucket
+
+Next check the state of the resource/bucket
+
+`terraform state show aws_s3_bucket.website_bucket`
+
+Output from the previous command :-
+
+```sh
+# aws_s3_bucket.website_bucket:
+resource "aws_s3_bucket" "website_bucket" {
+    arn                         = "arn:aws:s3:::phl2l3j34dtcz5a9ij8cb8cf0m3zjcu2"
+    bucket                      = "phl2l3j34dtcz5a9ij8cb8cf0m3zjcu2"
+    bucket_domain_name          = "phl2l3j34dtcz5a9ij8cb8cf0m3zjcu2.s3.amazonaws.com"
+    bucket_regional_domain_name = "phl2l3j34dtcz5a9ij8cb8cf0m3zjcu2.s3.eu-west-2.amazonaws.com"
+    force_destroy               = false
+    hosted_zone_id              = "Z3GKZC51ZF0DB4"
+    id                          = "phl2l3j34dtcz5a9ij8cb8cf0m3zjcu2"
+    object_lock_enabled         = false
+    region                      = "eu-west-2"
+    request_payer               = "BucketOwner"
+    tags                        = {
+        "Environment" = "Terraform-Bootcamp"
+        "UserUuid"    = "c9c9fdfc-6080-11ee-99a3-e3f5d76f44e8"
+    }
+    tags_all                    = {
+        "Environment" = "Terraform-Bootcamp"
+        "UserUuid"    = "c9c9fdfc-6080-11ee-99a3-e3f5d76f44e8"
+    }
+
+    grant {
+        id          = "7c099a2b47599c5e75de34d6b6a96fec72094933a9ad1edd911578037e7ba55"
+        permissions = [
+            "FULL_CONTROL",
+        ]
+        type        = "CanonicalUser"
+    }
+
+    server_side_encryption_configuration {
+        rule {
+            bucket_key_enabled = false
+
+            apply_server_side_encryption_by_default {
+                sse_algorithm = "AES256"
+            }
+        }
+    }
+
+    versioning {
+        enabled    = false
+        mfa_delete = false
+    }
+}
+```
+
+Now run the terraform command
+`terraform import aws_s3_bucket.website_bucket phl2l3j34dtcz5a9ij8cb8cf0m3zjcu2`
+ 
+
+## What happens if we lose our state file ?
+
+If you lose your statefile, you will likely have to tear down all your cloud infrastructure manually.
+
+You can use terraform import but it won't for all cloud resources.  You need to check the terraform providers documentation for which resources support import.
+
+### Fix Missing Resources with Terraform Import
+[Terraform Import](https://developer.hashicorp.com/terraform/cli/import)
+
+### Fix Manual Configuration
+
+If someone goes and deletes or modifies cloud resources manually through ClickOps.
+
+If we run Terraform plan it will attempt to our infrastructure back into the expected state fixing Configuration Drift
