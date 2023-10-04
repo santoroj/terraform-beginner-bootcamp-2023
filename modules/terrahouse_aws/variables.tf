@@ -19,3 +19,24 @@ variable "bucket_name" {
     error_message = "The bucket name must be between 3 and 63 characters"
   }
 }
+
+variable "index_html_filepath" {
+  description = "Path to the index.html file"
+  type        = string
+
+  validation {
+    condition = can(file(var.index_html_filepath))
+    error_message = "The specified path does not exist or is not a valid file."
+  }
+}
+
+variable "error_html_filepath" {
+  description = "Path to the error.html file"
+  type        = string
+
+  validation {
+    condition = can(file(var.error_html_filepath))
+    error_message = "The specified path does not exist or is not a valid file."
+  }
+}
+
