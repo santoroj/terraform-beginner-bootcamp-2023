@@ -7,16 +7,24 @@
 
 local delete a tag
 
-```git
+```sh
 git tag -d <tag_name>
 ```
 
 Remotely delete a tag
 
-```git
+```sh
 git push --delete origin tagname
 ```
 
+Checkout the commit that you want to retag. Grab the sh from yout Github history.
+
+```sh
+git checout <SHA>
+git tag M.M.P
+git put --tags
+git checkout main
+```
 
 ## Root Module Structure
 
