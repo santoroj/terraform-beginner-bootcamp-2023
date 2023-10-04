@@ -174,3 +174,49 @@ Using the source we can import the module from the various places eg:
 
 
 [Module Sources ](https://developer.hashicorp.com/teraform/language/modules/sources)
+
+
+## Considerations when using ChatGPT to write Terraform
+
+LLMs such as ChatGPT may not be trained on the latest documentation or information about Terraform.
+
+It may likely product older examples that could be deprecated.  Often afffecting providers.
+
+
+## Working with Files in Terraform
+
+### Files Exist Function
+
+This is a built int terraform function
+
+```terraform
+condition = can(file(var.index_html_filepath))
+```
+
+### Filemd5
+
+[filemd5 details](https://developer.hashicorp.com/terraform/language/functions/filemd5)
+
+### Filexists
+
+[fileexits detail](https://developer.hashicorp.com/terraform/language/functions/fileexists)
+
+### Path Variable
+
+In Terraform mthere is a special variable called `path` that allows us to reference local paths:
+
+- path.module = get the path for the current module
+- path.root = get the path for the root of the project
+
+
+[Special Path Variable](https://developer.hashicorp.com/terraform/language/expressions/references#filesystem-and-workspace-info)
+
+
+```terraform
+resource "aws_s3_object" "index_html" {
+  bucket = aws_s3_bucket.website_bucket.bucket
+  key    = "index.html"
+  source = var.index_html_filepath
+  etag = filemd5(var.index_html_filepath)
+}
+```
