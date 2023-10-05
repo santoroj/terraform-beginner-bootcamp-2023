@@ -178,7 +178,7 @@ We can pass input variables to our module
 
 The module has to declare the terraform variables in it's own variables.tf
 
-```tf
+```sh
 module "terrahouse_aws" {
   source = "./modules/terrahouse_aws"
   user_uuid = var.user_uuid
@@ -214,7 +214,7 @@ It may likely product older examples that could be deprecated.  Often afffecting
 
 This is a built int terraform function
 
-```terraform
+```sh
 condition = can(file(var.index_html_filepath))
 ```
 
@@ -237,7 +237,7 @@ In Terraform mthere is a special variable called `path` that allows us to refere
 [Special Path Variable](https://developer.hashicorp.com/terraform/language/expressions/references#filesystem-and-workspace-info)
 
 
-```terraform
+```sh
 resource "aws_s3_object" "index_html" {
   bucket = aws_s3_bucket.website_bucket.bucket
   key    = "index.html"
@@ -245,3 +245,45 @@ resource "aws_s3_object" "index_html" {
   etag = filemd5(var.index_html_filepath)
 }
 ```
+
+## Terraform Locals
+
+Locals allows us to define local variables.
+It can be very useful when we need to transform data into another formatand have it referenced as a variable
+
+```sh
+locals {
+  s3_origin_id = "MyS3Origin"
+}
+```
+[Local Values](https://developer.hashicorp.com/terraform/language/values/locals)
+
+
+### Terraform Data Sources
+
+This allows us to source data from cloud resources.
+
+This is useful when we want to reference cloud resources without importing them.
+
+```sh
+data "aws_caller_identity" "current" {}
+    output "account_id" {
+        value = data.aws_caller_identity.current.account_id
+    }
+}
+```
+
+[Terraform Data Sources](https://developer.hashicorp.com/terraform/language/data-sources)
+
+
+## Working with JSON
+
+we use the jsonencode to create the json policy inline in the hcl.
+
+```sh
+    jsonencode({"hello"="world"})
+    {"hello":"world"}
+```
+
+
+[jsoncode](ttps://developer.hashicorp.com/terraform/language/functions/jsonencode)
