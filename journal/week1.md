@@ -355,4 +355,23 @@ resource "aws_instance" "web" {
 
 ```
 
+## for Each Expression
 
+[or Each Expressions](https://developer.hashicorp.com/terraform/language/expressions/for)
+
+For each allows us to enumberate over complex data types
+
+```sh
+[ for s in var.list : upper(s)]
+```
+
+This is mostly useful when you are creating multiple of a cloud resource and you want to reduce the amount or repetitive terraform code.
+
+https://developer.hashicorp.com/terraform/language/functions/list
+
+### Example 
+> fileset("${path.root}/public/assets",  "*.{jpg,png,gif}")
+toset([
+  "arcanum.jpg",
+  "arcanum03.jpg",
+])

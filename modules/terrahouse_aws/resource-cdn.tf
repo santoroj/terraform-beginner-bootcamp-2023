@@ -28,7 +28,7 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
   default_root_object = "index.html"
 
 
-#   aliases = ["mysite.example.com", "yoursite.example.com"]
+  #   aliases = ["mysite.example.com", "yoursite.example.com"]
 
   default_cache_behavior {
     allowed_methods  = ["DELETE", "GET", "HEAD", "OPTIONS", "PATCH", "POST", "PUT"]
@@ -72,13 +72,13 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
     viewer_protocol_policy = "redirect-to-https"
   }
 
-  
+
   price_class = "PriceClass_200"
-  
+
   restrictions {
     geo_restriction {
-    #   restriction_type = "whitelist"
-    #   locations        = ["US", "CA", "GB", "DE"]
+      #   restriction_type = "whitelist"
+      #   locations        = ["US", "CA", "GB", "DE"]
       restriction_type = "none"
       locations        = []
     }
@@ -95,7 +95,7 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
 
 resource "terraform_data" "invalidate_cache" {
   triggers_replace = terraform_data.content_version.output
-  
+
   provisioner "local-exec" {
     # https://developer.hashicorp.com/terraform/language/expressions/strings#heredoc-strings
 
