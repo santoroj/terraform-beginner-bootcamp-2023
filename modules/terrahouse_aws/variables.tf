@@ -44,9 +44,14 @@ variable "error_html_filepath" {
 variable "content_version" {
   type        = number
   description = "The version of the content (positive integer starting at 1)"
-  
+
   validation {
     condition     = var.content_version > 0 && can(var.content_version) == true
     error_message = "Content version must be a positive integer starting at 1."
   }
+}
+
+variable "assets_path" {
+  description = "Path to assets folder"
+  type        = string
 }
