@@ -1,0 +1,17 @@
+# frozen_string_literal: true
+
+source "https://rubygems.org"
+
+
+# Notes
+# Sinatra - Web server 
+# rake - like make
+# pry - For break points to help debugging
+# puma - http server
+# activarecord - object mapper for validation
+
+gem 'sinatra'
+gem 'rake'
+gem 'pry'
+gem 'puma'
+gem 'activerecord'
