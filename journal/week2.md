@@ -63,3 +63,34 @@ bundle exec ruby server.rb
 ```
 
 All of the code for our web server is stored in the `server.rb` file
+
+
+## Programming Languages
+
+This section of the bootcamp is very confusing as there are talks about schema's Golang and Ruby scripts which if you have never seen them before can be confusing.
+
+Watching Andrew go through the video and drawing the diagrams explaining things was ok but the Ruby code and Go code is very confusing for a beginner
+
+At this point just accept the code that Andrew has written and if we need to do into more details then we can look at the Freecodecamp courses listed below
+
+
+## Ruby 
+[Ruby Course From FreeCodeCamp](https://www.freecodecamp.org/news/learning-ruby-from-zero-to-hero-90ad4eecc82d/)
+
+##  Go 
+[Golang Course From FreeCodeCamp](https://www.freecodecamp.org/news/go-golang-course/)
+
+
+## Drawing Package
+
+[Lucid App](https://lucid.app)
+
+
+From Andrews Video - here is my drawing
+[My Drawing](https://lucid.app/lucidchart/a7acdb0b-ed7b-4454-b063-8a45b88bc0a8/edit?invitationId=inv_4f1e0230-a224-429c-beaf-4c1c29b60edb)
+
+Note unable to do the second part of the drawing due to having a free trial.
+
+Maybe look at another drawing package such as [draw.io](https://app.diagrams.net/) in the future.
+
+
