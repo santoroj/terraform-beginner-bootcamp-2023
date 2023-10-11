@@ -87,7 +87,7 @@ At this point just accept the code that Andrew has written and if we need to do 
 
 
 From Andrews Video - here is my drawing
-[My Drawing](https://lucid.app/lucidchart/a7acdb0b-ed7b-4454-b063-8a45b88bc0a8/edit?invitationId=inv_4f1e0230-a224-429c-beaf-4c1c29b60edb)
+[My Drawing](Diagrams/terratown-web.pdf)
 
 Note unable to do the second part of the drawing due to having a free trial.
 
