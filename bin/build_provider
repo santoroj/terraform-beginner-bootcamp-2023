@@ -9,6 +9,7 @@ PLUGIN_DIR="/home/gitpod/.terraform.d/plugins/local.providers/local/terratowns/$
 PLUGIN_NAME="terraform-provider-terratowns_v${VERSION}"
 
 cd "${PROJECT_ROOT}/terraform-provider-terratowns" || exit
+<<<<<<< HEAD
 cp "${PROJECT_ROOT}/terraformrc" /home/gitpod/.terraformrc
 
 
@@ -48,6 +49,8 @@ PLUGIN_DIR="/home/gitpod/.terraform.d/plugins/local.providers/local/terratowns/$
 PLUGIN_NAME="terraform-provider-terratowns_v${VERSION}"
 
 cd "${PROJECT_ROOT}/terraform-provider-terratowns"
+=======
+>>>>>>> 22ecf6f (#44 setup skeleton for resource)
 cp "${PROJECT_ROOT}/terraformrc" /home/gitpod/.terraformrc
 
 
@@ -56,6 +59,10 @@ rm -rf "${PROJECT_ROOT}/.terraform.d"
 rm -rf "${PROJECT_ROOT}/.terraform.lock.hcl" 
 
 go build -o "${PLUGIN_NAME}"
+if [ $? -ne 0 ] ; then
+    echo "ERROR: Build did not work"
+    exit 1
+fi
 
 mkdir -p "${PLUGIN_DIR}/x86_64"
 mkdir -p "${PLUGIN_DIR}/linux_amd64"
@@ -66,5 +73,17 @@ cp ${PLUGIN_NAME} ${PLUGIN_DIR}/linux_amd_64
 >>>>>>> 494dce1 (#44 wip setting up the skeleton for creating a custom terraform provider)
 =======
 cp "${PLUGIN_NAME}" "${PLUGIN_DIR}/x86_64/"
+if [ $? -ne 0 ] ; then
+    echo "ERROR: copy to x86_64 failed"
+    exit 1
+fi
+
 cp "${PLUGIN_NAME}" "${PLUGIN_DIR}/linux_amd64/"
+<<<<<<< HEAD
 >>>>>>> 349c60e (#44 implement terraform provider block in terraform)
+=======
+if [ $? -ne 0 ] ; then
+    echo "ERROR: copy to amd64 failed"
+    exit 1
+fi
+>>>>>>> 22ecf6f (#44 setup skeleton for resource)

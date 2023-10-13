@@ -6,13 +6,19 @@ replace github.com/santoroj/terraform-provider-terratowns => /workspace/terrafor
 
 require (
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 22ecf6f (#44 setup skeleton for resource)
 	github.com/google/uuid v1.3.0
 	github.com/hashicorp/terraform-plugin-sdk/v2 v2.29.0
 )
 
 require (
+<<<<<<< HEAD
 =======
 >>>>>>> 494dce1 (#44 wip setting up the skeleton for creating a custom terraform provider)
+=======
+>>>>>>> 22ecf6f (#44 setup skeleton for resource)
 	github.com/agext/levenshtein v1.2.2 // indirect
 	github.com/apparentlymart/go-textseg/v15 v15.0.0 // indirect
 	github.com/fatih/color v1.13.0 // indirect
@@ -30,9 +36,12 @@ require (
 	github.com/hashicorp/terraform-plugin-go v0.19.0 // indirect
 	github.com/hashicorp/terraform-plugin-log v0.9.0 // indirect
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 	github.com/hashicorp/terraform-plugin-sdk/v2 v2.29.0 // indirect
 >>>>>>> 494dce1 (#44 wip setting up the skeleton for creating a custom terraform provider)
+=======
+>>>>>>> 22ecf6f (#44 setup skeleton for resource)
 	github.com/hashicorp/terraform-registry-address v0.2.2 // indirect
 	github.com/hashicorp/terraform-svchost v0.1.1 // indirect
 	github.com/hashicorp/yamux v0.0.0-20181012175058-2f1d1f20f75d // indirect
