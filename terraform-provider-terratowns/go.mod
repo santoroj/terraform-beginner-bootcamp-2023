@@ -1,11 +1,9 @@
-module github.com/santoroj/terraform-provider-terratowns
+module terraform-provider-terratowns
 
-go 1.20
-
-replace github.com/santoroj/terraform-provider-terratowns => /workspace/terraform-beginner-bootcamp-2023/terraform-provider-terratowns
+go 1.21.1
 
 require (
-	github.com/google/uuid v1.3.0
+	github.com/google/uuid v1.3.1
 	github.com/hashicorp/terraform-plugin-sdk/v2 v2.29.0
 )
 
