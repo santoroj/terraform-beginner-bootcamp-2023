@@ -1,4 +1,3 @@
-
 # Terraform Begineer Bootcamp 2023 - Week 1
 
 ## Fixing Tags
@@ -41,15 +40,14 @@ PROJECT_ROOT
 ├── README.md - Required for root modules
 ```
 
-
 [Standard Module Structure](https://developer.hashicorp.com/terraform/language/modules/develop/structure)
-
 
 ## Terraform and Input Variables
 
 ## Terraform Cloud Variables
 
 In terraform we can set two kinds of variables:
+
 - Environment Variables - those you would set in your bash terminal eg. AWS credentials
 - Terraform Variables - those that you would normally set in your tfvars file
 
@@ -61,10 +59,11 @@ We can set Terraform Cloud varibles to be sensistive so they are not show visibl
 
 ### var flag
 
-We can use the `-var` flag to set an input variable or override a variable in the tfvars file 
+We can use the `-var` flag to set an input variable or override a variable in the tfvars file
 eg .`terraform -var user_uuid="my-user-id"`
 
 ### var-file flag
+
 - TODO: doument this flag
 
 ### terraform.tfvars
@@ -78,7 +77,6 @@ This is the defailt file to load in teraform variables in bluk
 ### order of terraform variables
 
 - TODO: document which terraform variables takes presendence
-
 
 ## Dealing with Configuration Drift
 
@@ -94,13 +92,13 @@ Output from the previous command :-
 ```sh
 # aws_s3_bucket.website_bucket:
 resource "aws_s3_bucket" "website_bucket" {
-    arn                         = "arn:aws:s3:::phl2l3j34dtcz5a9ij8cb8cf0m3zjcu2"
-    bucket                      = "phl2l3j34dtcz5a9ij8cb8cf0m3zjcu2"
-    bucket_domain_name          = "phl2l3j34dtcz5a9ij8cb8cf0m3zjcu2.s3.amazonaws.com"
-    bucket_regional_domain_name = "phl2l3j34dtcz5a9ij8cb8cf0m3zjcu2.s3.eu-west-2.amazonaws.com"
+    arn                         = "arn:aws:s3:::phl2l3j34dtcz5a9ij8cb8cf0m3zjcu3"
+    bucket                      = "phl2l3j34dtcz5a9ij8cb8cf0m3zjcu3"
+    bucket_domain_name          = "phl2l3j34dtcz5a9ij8cb8cf0m3zjcu3.s3.amazonaws.com"
+    bucket_regional_domain_name = "phl2l3j34dtcz5a9ij8cb8cf0m3zjcu3.s3.eu-west-2.amazonaws.com"
     force_destroy               = false
     hosted_zone_id              = "Z3GKZC51ZF0DB4"
-    id                          = "phl2l3j34dtcz5a9ij8cb8cf0m3zjcu2"
+    id                          = "phl2l3j34dtcz5a9ij8cb8cf0m3zjcu3"
     object_lock_enabled         = false
     region                      = "eu-west-2"
     request_payer               = "BucketOwner"
@@ -139,17 +137,16 @@ resource "aws_s3_bucket" "website_bucket" {
 ```
 
 Now run the terraform command
-`terraform import aws_s3_bucket.website_bucket phl2l3j34dtcz5a9ij8cb8cf0m3zjcu2`
- 
+`terraform import aws_s3_bucket.website_bucket phl2l3j34dtcz5a9ij8cb8cf0m3zjcu3`
 
 ## What happens if we lose our state file ?
 
 If you lose your statefile, you will likely have to tear down all your cloud infrastructure manually.
 
-You can use terraform import but it won't for all cloud resources.  You need to check the terraform providers documentation for which resources support import.
-
+You can use terraform import but it won't for all cloud resources. You need to check the terraform providers documentation for which resources support import.
 
 ### Fix Missing Resources with Terraform Import
+
 [Terraform Import](https://developer.hashicorp.com/terraform/cli/import)
 
 ### Fix Manual Configuration
@@ -164,13 +161,11 @@ If we run Terraform plan it will attempt to our infrastructure back into the exp
 terraform apply --refresh-only -auto-approve
 ```
 
-
 ## Terraform Modules
 
 ### Terraform Module Structure
 
 It is recommend to place modules in a `modules` directory when locally developing modules but you can name it whatever you like
-
 
 ### Passing Inut Variables
 
@@ -187,7 +182,6 @@ module "terrahouse_aws" {
 
 ```
 
-
 ### Modules Sources
 
 Using the source we can import the module from the various places eg:
@@ -196,17 +190,13 @@ Using the source we can import the module from the various places eg:
 - github
 - terraform registry
 
-
-
 [Module Sources ](https://developer.hashicorp.com/teraform/language/modules/sources)
-
 
 ## Considerations when using ChatGPT to write Terraform
 
 LLMs such as ChatGPT may not be trained on the latest documentation or information about Terraform.
 
-It may likely product older examples that could be deprecated.  Often afffecting providers.
-
+It may likely product older examples that could be deprecated. Often afffecting providers.
 
 ## Working with Files in Terraform
 
@@ -233,9 +223,7 @@ In Terraform mthere is a special variable called `path` that allows us to refere
 - path.module = get the path for the current module
 - path.root = get the path for the root of the project
 
-
 [Special Path Variable](https://developer.hashicorp.com/terraform/language/expressions/references#filesystem-and-workspace-info)
-
 
 ```sh
 resource "aws_s3_object" "index_html" {
@@ -256,8 +244,8 @@ locals {
   s3_origin_id = "MyS3Origin"
 }
 ```
-[Local Values](https://developer.hashicorp.com/terraform/language/values/locals)
 
+[Local Values](https://developer.hashicorp.com/terraform/language/values/locals)
 
 ### Terraform Data Sources
 
@@ -275,7 +263,6 @@ data "aws_caller_identity" "current" {}
 
 [Terraform Data Sources](https://developer.hashicorp.com/terraform/language/data-sources)
 
-
 ## Working with JSON
 
 we use the jsonencode to create the json policy inline in the hcl.
@@ -285,10 +272,7 @@ we use the jsonencode to create the json policy inline in the hcl.
     {"hello":"world"}
 ```
 
-
 [jsoncode](ttps://developer.hashicorp.com/terraform/language/functions/jsonencode)
-
-
 
 ### Changing the Lifecycle of Resources
 
@@ -299,7 +283,6 @@ we use the jsonencode to create the json policy inline in the hcl.
 Plain data values such as Local Values and Input Variables don't have any side-effects to plan against and so they aren't valid in replace_triggered_by. You can use terraform_data's behavior of planning an action each time input changes to indirectly use a plain value to trigger replacement.
 
 [Terraform Data](https://developer.hashicorp.com/terraform/language/data-sources)
-
 
 ## Provisioners
 
@@ -369,9 +352,10 @@ This is mostly useful when you are creating multiple of a cloud resource and you
 
 https://developer.hashicorp.com/terraform/language/functions/list
 
-### Example 
-> fileset("${path.root}/public/assets",  "*.{jpg,png,gif}")
-toset([
-  "arcanum.jpg",
-  "arcanum03.jpg",
-])
+### Example
+
+> fileset("${path.root}/public/assets", "\*.{jpg,png,gif}")
+> toset([
+> "arcanum.jpg",
+> "arcanum03.jpg",
+> ])
