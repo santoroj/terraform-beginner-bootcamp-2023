@@ -96,3 +96,12 @@ From Andrews Video - here is my drawing
 Note unable to do the second part of the drawing due to having a free trial.
 
 Maybe look at another drawing package such as [draw.io](https://app.diagrams.net/) in the future.
+
+
+## Joes Beers
+
+I've managed to replace references to Arcanum with Joes Gluten Free Beers
+The images have come through ok but the styling is all wrong.
+Looks like the style.css file is not being picked up whilst in the terratowns frame
+
+I don't think there is anything I can do about this - looked at other examples and their styles are also wrong.

@@ -1,6 +1,7 @@
 
 resource "aws_s3_bucket" "website_bucket" {
-  bucket = var.bucket_name
+  # We want to assign a random bucket name 
+  # bucket = var.bucket_name
 
   tags = {
     UserUuid    = var.user_uuid
@@ -38,6 +39,21 @@ resource "aws_s3_object" "index_html" {
   }
 }
 
+resource "aws_s3_object" "styles_css" {
+  bucket       = aws_s3_bucket.website_bucket.bucket
+  key          = "styles.css"
+  source       = var.css_filepath
+  content_type = "text/html"
+
+
+  etag = filemd5(var.css_filepath)
+
+  lifecycle {
+    replace_triggered_by = [terraform_data.content_version.output]
+    ignore_changes       = [etag]
+  }
+}
+
 
 resource "aws_s3_object" "upload_assets" {
   for_each = fileset(var.assets_path, "*.{jpg,png,gif}")
@@ -59,12 +75,10 @@ resource "aws_s3_object" "error_html" {
   source       = var.error_html_filepath
   content_type = "text/html"
 
-
   etag = filemd5(var.error_html_filepath)
-
-  # lifecycle {
-  #   ignore_changes = [etag]
-  # }
+  lifecycle {
+     ignore_changes = [etag]
+  }
 
 }
 
