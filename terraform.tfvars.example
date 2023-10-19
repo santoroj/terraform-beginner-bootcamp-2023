@@ -1,6 +1,6 @@
 index_html_filepath="/workspace/terraform-beginner-bootcamp-2023/public/index.html"
 css_filepath="/workspace/terraform-beginner-bootcamp-2023/public/styles.css"
 error_html_filepath="/workspace/terraform-beginner-bootcamp-2023/public/error.html"
-content_version=2
+content_version=3
 assets_path="/workspace/terraform-beginner-bootcamp-2023/public/assets/"
 terratowns_endpoint = "https://terratowns.cloud/api"
