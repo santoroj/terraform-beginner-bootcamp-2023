@@ -40,6 +40,17 @@ variable "error_html_filepath" {
   }
 }
 
+variable "css_filepath" {
+  description = "Path to the styles.css file"
+  type        = string
+
+  validation {
+    condition     = can(file(var.css_filepath))
+    error_message = "The specified path does not exist or is not a valid file."
+  }
+}
+
+
 
 variable "content_version" {
   type        = number
