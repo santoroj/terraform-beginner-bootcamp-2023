@@ -46,7 +46,7 @@ resource "terratowns_home" "home_beer" {
 EOF
   domain_name = module.home_beer_hosting.domain_name
   #vdomain_name     = "d2n1h11ceu5m34.cloudfront.net"
-  town            = "missingo"
+  town            = "cooker-cove"
   content_version = var.beer.content_version
 }
 
