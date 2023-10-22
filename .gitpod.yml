@@ -4,10 +4,11 @@ tasks:
       TF_LOG: DEBUG
     before: |
       cd $PROJECT_ROOT
+      source ./bin/set_tf_alias
       source ./bin/install_terraform_cli
       source ./bin/generate_tfrc_credientals
-      source ./bin/set_tf_alias
       cp $PROJECT_ROOT/terraform.tfvars.example $PROJECT_ROOT/terraform.tfvars
+      source ./bin/build_provider
   - name: sinatra
     before: | 
       cd $PROJECT_ROOT

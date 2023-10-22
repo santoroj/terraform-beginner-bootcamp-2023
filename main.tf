@@ -6,6 +6,22 @@ terraform {
       version = "1.0.0"
     }
   }
+
+  # backend "remote" {
+  # hostname = "app.terraform.io"
+  # organization = "Exampro"
+#
+
+# workspaces {
+#   name = "terra-house-1"
+# }
+
+  cloud {
+    organization = "terraform-beginner-bootcamp-2023"
+    workspaces {
+      name = "terra-house-1"
+    }
+  }
 }
 
 provider "terratowns" {
@@ -14,25 +30,42 @@ provider "terratowns" {
   token     = var.terratowns_access_token
 }
 
-
-module "terrahouse_aws" {
-  source              = "./modules/terrahouse_aws"
+###############################################################################
+module "home_beer_hosting" {
+  source              = "./modules/terrahome_aws"
   user_uuid           = var.teacherseat_uuid
-  index_html_filepath = var.index_html_filepath
-  error_html_filepath = var.error_html_filepath
-  css_filepath        = var.css_filepath
-  content_version     = var.content_version
-  assets_path         = var.assets_path
+  public_path         = var.beer.public_path
+  content_version     = var.beer.content_version
 }
 
-resource "terratowns_home" "home" {
+resource "terratowns_home" "home_beer" {
   name        = "Joes Cool Beers for 2023/24"
   description = <<-EOF
   Fanstic Gluten Free Beers.
   Better than ordinary beers.
 EOF
-  domain_name = module.terrahouse_aws.cloudfront_url
+  domain_name = module.home_beer_hosting.domain_name
   #vdomain_name     = "d2n1h11ceu5m34.cloudfront.net"
   town            = "missingo"
-  content_version = var.content_version
+  content_version = var.beer.content_version
+}
+
+###############################################################################
+
+module "home_payday_hosting" {
+  source              = "./modules/terrahome_aws"
+  user_uuid           = var.teacherseat_uuid
+  public_path         = var.payday.public_path
+  content_version     = var.payday.content_version
+}
+
+resource "terratowns_home" "home_payday" {
+  name        = "Making your own Payday Bar"
+  description = <<-EOF
+  Since I really like payday bars I decided to see if I could make my own payday bars
+EOF
+  domain_name = module.home_payday_hosting.domain_name
+  #vdomain_name     = "d2n1h11ceu5m34.cloudfront.net"
+  town            = "missingo"
+  content_version = var.payday.content_version
 }
