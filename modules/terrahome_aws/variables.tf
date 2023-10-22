@@ -20,36 +20,10 @@ variable "user_uuid" {
  # }
 #}
 
-variable "index_html_filepath" {
-  description = "Path to the index.html file"
+variable "public_path" {
+  description = "File path for the public directory"
   type        = string
-
-  validation {
-    condition     = can(file(var.index_html_filepath))
-    error_message = "The specified path does not exist or is not a valid file."
-  }
 }
-
-variable "error_html_filepath" {
-  description = "Path to the error.html file"
-  type        = string
-
-  validation {
-    condition     = can(file(var.error_html_filepath))
-    error_message = "The specified path does not exist or is not a valid file."
-  }
-}
-
-variable "css_filepath" {
-  description = "Path to the styles.css file"
-  type        = string
-
-  validation {
-    condition     = can(file(var.css_filepath))
-    error_message = "The specified path does not exist or is not a valid file."
-  }
-}
-
 
 
 variable "content_version" {
@@ -60,9 +34,4 @@ variable "content_version" {
     condition     = var.content_version > 0 && can(var.content_version) == true
     error_message = "Content version must be a positive integer starting at 1."
   }
-}
-
-variable "assets_path" {
-  description = "Path to assets folder"
-  type        = string
 }
